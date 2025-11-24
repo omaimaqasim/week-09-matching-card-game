@@ -1,0 +1,4 @@
+remember that you can not write diff transform property two times
+saperately as second one overright first one instead do this
+
+transform : translate(1.1) rotatex(360deg)

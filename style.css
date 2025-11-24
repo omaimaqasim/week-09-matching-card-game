@@ -35,23 +35,42 @@ body{
 }
 
 .card{
-    border: solid rgba(123, 16, 16, 0);
     background-color:rgba(61, 5, 5, 0.785) ;
     width: 150px;
     height: 170px;
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    /* prespective make 3d look more real */
+    perspective: 1000px;
     
     
    
 }
+.inner{
+    /* this enable 3d style */
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease-in-out;
+    /* we write transfrom instead of all beacuse then it enable all like color size changes with transition */
+
+}
+/* styling front and back */
+.front,.back{
+ position: relative;
+ width: 100%;
+ height: 100%;
+ border-radius: 10px;
+ /* this make backside of visibility hidden mean if you rotate this then it will not show backside of that div */
+ backface-visibility: hidden;
+}
 .card img{
-    object-fit: contain;
+    object-fit: cover;
+    border-radius: 10px;
     width: 100%;
     height: 100%;
 }
 .card:hover{
-    transform: scale(1.07);
+    transform: scale(1.07)  ;
+    /* rotateY(180deg) */
         box-shadow: 0px 0px 8px 2px #b90303e8;
 }
