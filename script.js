@@ -30,5 +30,9 @@ let card = document.querySelectorAll(".card")
 Array.from(card).forEach(c=>{
  c.addEventListener("click",()=>{
     c.classList.add('flipped');
+    let img_src = c.querySelector(".back img").src.split("/")
+    let pic_name = img_src[img_src.length-1]
+     
 })
+
 })
