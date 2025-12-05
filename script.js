@@ -26,13 +26,33 @@ for (let i = 0; i <=11; i++) {
 // add js for flipping card when click
 
 let card = document.querySelectorAll(".card")
+let count_clicked = 0
 
 Array.from(card).forEach(c=>{
  c.addEventListener("click",()=>{
+    // this prevent multiple click on same card
+    
+     if (c.classList.contains("flipped")) {
+         return
+     }
+
+
     c.classList.add('flipped');
+    count_clicked++
+
+    // logic of two card click
     let img_src = c.querySelector(".back img").src.split("/")
     let pic_name = img_src[img_src.length-1]
-     
+     let lockboard = false;
+    if (count_clicked==2) {
+       lockboard = true
+
+    }
+    if (lockboard)return
+
+    console.log(pic_name,count_clicked)
+    
 })
+
 
 })
