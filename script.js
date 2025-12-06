@@ -27,11 +27,12 @@ for (let i = 0; i <=11; i++) {
 
 let card = document.querySelectorAll(".card")
 let count_clicked = 0
+let lockboard = false;
 
 Array.from(card).forEach(c=>{
- c.addEventListener("click",()=>{
+    c.addEventListener("click",()=>{
+     if (lockboard)return;
     // this prevent multiple click on same card
-    
      if (c.classList.contains("flipped")) {
          return
      }
@@ -39,18 +40,23 @@ Array.from(card).forEach(c=>{
 
     c.classList.add('flipped');
     count_clicked++
-
-    // logic of two card click
+    
+    // logic for checking matching card
     let img_src = c.querySelector(".back img").src.split("/")
     let pic_name = img_src[img_src.length-1]
-     let lockboard = false;
-    if (count_clicked==2) {
-       lockboard = true
-
+    let past_picname 
+    let current_pic=pic_name
+ 
+  
+   
+    // logic of two card click
+    if (count_clicked===2  ) {
+        lockboard = true
+     
+          
     }
-    if (lockboard)return
 
-    console.log(pic_name,count_clicked)
+    console.log(current_pic,past_picname)
     
 })
 
