@@ -48,15 +48,25 @@ Array.from(card).forEach(c => {
         let img_src = c.querySelector(".back img").src.split("/")
         let pic_name = img_src[img_src.length - 1]
         cards_img.push(pic_name)
-        
+        console.log("clicked!");
+
+
         // logic of two card click
         if (count_clicked === 2) {
-            [past_picname,current_pic] = cards_img
-            console.log(past_picname,current_pic)
-            lockboard = true
-            
+            [past_picname, current_pic] = cards_img
+            console.log(past_picname, current_pic)
+
+            setTimeout(() => {
+                past_picname === current_pic ? alert("you win") : alert("you lose")
+                lockboard = true
+
+            }, 1500);
+
+           
 
         }
+
+
 
 
     })
