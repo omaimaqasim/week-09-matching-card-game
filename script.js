@@ -31,6 +31,7 @@ let lockboard = false;
 let cards_img = []
 let past_picname
 let current_pic
+let click_cards = []
 
 Array.from(card).forEach(c => {
     c.addEventListener("click", () => {
@@ -39,6 +40,11 @@ Array.from(card).forEach(c => {
         if (c.classList.contains("flipped")) {
             return
         }
+
+        // saving element in array
+
+        click_cards.push(c)
+        
 
 
         c.classList.add('flipped');
@@ -57,11 +63,21 @@ Array.from(card).forEach(c => {
             console.log(past_picname, current_pic)
 
             setTimeout(() => {
-                past_picname === current_pic ? alert("you win") : alert("you lose")
-                lockboard = true
-
-            }, 1500);
-
+                
+                if (past_picname===current_pic) {
+                    alert("you win")
+                   
+                }
+                else{
+                    alert("you lose")
+                     count_clicked=0
+                     click_cards.forEach(card=>card.classList.remove("flipped"))
+                    lockboard=false
+                    // debug the error when you click same card it show error as both file img shi
+                }
+            }, 1000);
+            
+            lockboard = true
            
 
         }
