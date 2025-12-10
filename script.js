@@ -42,7 +42,6 @@ Array.from(card).forEach(c => {
         }
 
         // saving element in array
-
         click_cards.push(c)
         
 
@@ -60,23 +59,29 @@ Array.from(card).forEach(c => {
         // logic of two card click
         if (count_clicked === 2) {
             [past_picname, current_pic] = cards_img
-            console.log(past_picname, current_pic)
+           
 
             setTimeout(() => {
                 
                 if (past_picname===current_pic) {
-                    alert("you win")
+                    // debuge the error when you got one match then after that if you click
+                    // unmatch one it does no flip
+                     click_cards = []
+                    lockboard=false;
                    
                 }
                 else{
-                    alert("you lose")
                      count_clicked=0
+                     console.log(click_cards)
                      click_cards.forEach(card=>card.classList.remove("flipped"))
-                    lockboard=false
-                    // debug the error when you click same card it show error as both file img shi
+                    //  update click cards
+                     click_cards = []
+                    lockboard=false;
                 }
             }, 1000);
-            
+
+        //   update cards_img array for another round
+            cards_img = []
             lockboard = true
            
 
