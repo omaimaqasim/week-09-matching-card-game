@@ -32,6 +32,14 @@ let cards_img = []
 let past_picname
 let current_pic
 let click_cards = []
+let track_moves = 0
+let track_matches = 0
+let total_pair = imgs.length/2;
+let moves_div = document.querySelector(".moves_check p")
+let matches_div = document.querySelector(".matches_tracking p")
+
+// updating matches 
+ matches_div.innerHTML = `${track_matches}/${total_pair}`
 
 Array.from(card).forEach(c => {
     c.addEventListener("click", () => {
@@ -43,7 +51,7 @@ Array.from(card).forEach(c => {
 
         // saving element in array
         click_cards.push(c)
-        
+
 
 
         c.classList.add('flipped');
@@ -53,37 +61,44 @@ Array.from(card).forEach(c => {
         let img_src = c.querySelector(".back img").src.split("/")
         let pic_name = img_src[img_src.length - 1]
         cards_img.push(pic_name)
-        console.log("clicked!");
 
 
         // logic of two card click
         if (count_clicked === 2) {
             [past_picname, current_pic] = cards_img
-           
+
+            track_moves++
+            moves_div.innerHTML = track_moves;
+
 
             setTimeout(() => {
-                
-                if (past_picname===current_pic) {
+
+                if (past_picname === current_pic) {
                     // debuge the error when you got one match then after that if you click
                     // unmatch one it does no flip
-                     click_cards = []
-                    lockboard=false;
-                   
+                    count_clicked = 0
+                    click_cards = []
+                    lockboard = false;
+                    track_matches++
+                    matches_div.innerHTML = `${track_matches}/${total_pair}`
+
                 }
-                else{
-                     count_clicked=0
-                     console.log(click_cards)
-                     click_cards.forEach(card=>card.classList.remove("flipped"))
+                else {
+                    count_clicked = 0
+                    console.log(click_cards)
+                    click_cards.forEach(card => card.classList.remove("flipped"))
                     //  update click cards
-                     click_cards = []
-                    lockboard=false;
+                    
+                    click_cards = []
+                    lockboard = false;
                 }
             }, 1000);
 
-        //   update cards_img array for another round
+
+            //   update cards_img array for another round
             cards_img = []
             lockboard = true
-           
+
 
         }
 
