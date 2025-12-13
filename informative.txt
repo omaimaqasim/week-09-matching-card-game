@@ -8,3 +8,5 @@ but after des then lockboard true will correct this error
 
 remember that if you do something to ui using js.
 The browser paints the UI AFTER your JavaScript finishes
+
+remember this :  if runs only once, immediately when the script loads.

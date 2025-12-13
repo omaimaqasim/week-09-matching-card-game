@@ -34,12 +34,13 @@ let current_pic
 let click_cards = []
 let track_moves = 0
 let track_matches = 0
-let total_pair = imgs.length/2;
+let total_pair = imgs.length / 2;
 let moves_div = document.querySelector(".moves_check p")
 let matches_div = document.querySelector(".matches_tracking p")
+let restart_btn = document.querySelector(".restart");
 
 // updating matches 
- matches_div.innerHTML = `${track_matches}/${total_pair}`
+matches_div.innerHTML = `${track_matches}/${total_pair}`
 
 Array.from(card).forEach(c => {
     c.addEventListener("click", () => {
@@ -88,7 +89,7 @@ Array.from(card).forEach(c => {
                     console.log(click_cards)
                     click_cards.forEach(card => card.classList.remove("flipped"))
                     //  update click cards
-                    
+
                     click_cards = []
                     lockboard = false;
                 }
@@ -97,15 +98,31 @@ Array.from(card).forEach(c => {
 
             //   update cards_img array for another round
             cards_img = []
-            lockboard = true
+            // showing win message
+            // soon hcek if this working correct or not
+            if (total_pair===track_matches) {
+                setTimeout(() => {
+                    alert(`🎉 You won in ${track_moves} moves!`);
+                    lockboard = true;
+                }, 300);
+                
+            }
 
 
         }
-
-
-
+        
+        
+        
+        
+        
 
     })
 
+    
+})
 
+
+restart_btn.addEventListener("click",()=>{
+    // for reloading the website
+    location.reload()
 })

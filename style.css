@@ -5,6 +5,7 @@
     padding: 0;
     box-sizing: border-box;
     color: white;
+   font-family: "Poppins", sans-serif;
     
 }
 body{
@@ -20,9 +21,9 @@ body{
 }
 
 .track_container{
-    border: solid rgb(255, 255, 255);
+    border: solid rgba(241, 239, 239, 0.793);
     border-radius: 5px;
-    padding: 10px;
+    padding: 20px;
     width: 50vw;
     display: flex;
     align-items: center;
@@ -54,7 +55,6 @@ body{
 }
 .tracking h1{
     font-size: 0.8rem;
-    font-family: "Poppins", sans-serif;
     font-weight: 400;
 }
 .tracking p{
@@ -129,4 +129,23 @@ body{
 }
 .card.flipped .inner {
     transform: rotateY(180deg);
+}
+
+/* win styling */
+
+.restart{
+    background-color: #4b0606e8;
+    padding: 12px 26px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+       box-shadow: 0px 0px 7px 2px rgb(97, 16, 16);
+       border: none;
+       transition: all 0.2s ease-in;
+       cursor: pointer;
+     
+}
+.restart:hover{
+    transform: scale(1.1);
+    box-shadow: 0px 0px 7px 2px rgb(172, 17, 17);
+
 }
