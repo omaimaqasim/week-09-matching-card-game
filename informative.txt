@@ -23,3 +23,6 @@ This avoids layout issues and makes the design responsive and clean.
 
 Golden rule:
 👉 Let grid decide width, use aspect-ratio to decide height.
+
+
+Never check conditions dependent on delayed variables outside the setTimeout.

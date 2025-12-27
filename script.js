@@ -58,6 +58,10 @@ let total_pair = imgs.length / 2;
 let moves_div = document.querySelector(".moves_check p");
 let matches_div = document.querySelector(".matches_tracking p");
 let restart_btn = document.querySelector(".restart");
+let win_cont = document.querySelector(".win_cont")
+let win_cont_para = document.querySelector(".win_cont p")
+let play_again = document.querySelector(".win_cont .play_again")
+
 
 // Initial matches display
 matches_div.innerHTML = `${track_matches}/${total_pair}`;
@@ -103,6 +107,15 @@ Array.from(card).forEach(c => {
 
                     track_matches++;
                     matches_div.innerHTML = `${track_matches}/${total_pair}`;
+                    // ============================
+                    // Win condition check
+                    // ============================
+                    if (total_pair === track_matches) {
+                            win_cont_para.innerHTML = `moves: ${moves_div.innerHTML}`
+                          win_cont.classList.remove("hidden");
+                            lockboard = true;
+                     
+                    }
 
                 } else {
 
@@ -123,15 +136,6 @@ Array.from(card).forEach(c => {
             cards_img = [];
             lockboard = true;
 
-            // ============================
-            // Win condition check
-            // ============================
-            if (total_pair === track_matches) {
-                setTimeout(() => {
-                    alert(`🎉 You won in ${track_moves} moves!`);
-                    lockboard = true;
-                }, 300);
-            }
         }
     });
 });
@@ -140,5 +144,9 @@ Array.from(card).forEach(c => {
 // Restart game
 // ================================
 restart_btn.addEventListener("click", () => {
+    location.reload();
+});
+
+play_again.addEventListener("click", () => {
     location.reload();
 });
